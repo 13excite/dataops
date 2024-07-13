@@ -33,3 +33,11 @@ module "ingress" {
     helm = helm
   }
 }
+
+module "argocd" {
+  source                            = "../../modules/argocd"
+  argocd_server_admin_password_hash = var.argocd_server_admin_password_hash
+  providers = {
+    helm = helm
+  }
+}

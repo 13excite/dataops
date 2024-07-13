@@ -19,6 +19,14 @@ variable "nginx_ingress_resources_requests" {
 variable "nginx_ingress_service_annotations" {
   description = "Annotations for the ingress service"
   type        = map(string)
-  default     = {}
 
+  default = {}
+}
+
+variable "argocd_server_admin_password_hash" {
+  description = "The ArgoCD bcrypt hashed admin password."
+  type        = string
+  sensitive   = true
+  # hash of "password" password
+  default = "$2a$10$zvq2GgaU01tzGX3N8yqSTuFlOXyTMci9FB1avkxo67Ph84vx45lLe"
 }
