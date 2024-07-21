@@ -41,4 +41,6 @@ module "argocd" {
   providers = {
     helm = helm
   }
+
+  depends_on = [module.ingress]
 }
