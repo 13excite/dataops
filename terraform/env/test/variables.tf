@@ -30,3 +30,9 @@ variable "argocd_server_admin_password_hash" {
   # hash of "password" password
   default = "$2a$10$zvq2GgaU01tzGX3N8yqSTuFlOXyTMci9FB1avkxo67Ph84vx45lLe"
 }
+
+variable "argocd_repo_ssh_key" {
+  description = "The SSH Key of dataops repository."
+  type        = string
+  sensitive   = true
+}

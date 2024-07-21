@@ -37,6 +37,7 @@ module "ingress" {
 module "argocd" {
   source                            = "../../modules/argocd"
   argocd_server_admin_password_hash = var.argocd_server_admin_password_hash
+  argocd_repo_ssh_key               = var.argocd_repo_ssh_key
   providers = {
     helm = helm
   }
