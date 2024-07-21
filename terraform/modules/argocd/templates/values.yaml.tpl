@@ -16,15 +16,15 @@ configs:
     # any time before now
     argocdServerAdminPasswordMtime: "2024-07-12T11:11:11Z"
 
-  # repositories:
-  #   dataops:
-  #     url: https://github.com/13excite/dataops
+  repositories:
+    dataops:
+      url: https://github.com/13excite/dataops
 
-  # credentialTemplates:
-  #   https-creds:
-  #     url: https://github.com/13excite
-  #     username: 13excite
-  #     password: SKIP_FOR_WHILE
+  credentialTemplates:
+    ssh-creds:
+     url: git@github.com:13excite
+     sshPrivateKey: |
+        ${indent(8, dataops_repo_ssh_key)}
 
 dex:
   enabled: false

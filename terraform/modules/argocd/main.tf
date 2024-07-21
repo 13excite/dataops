@@ -23,6 +23,7 @@ resource "helm_release" "argocd" {
   values = [
     templatefile("${path.module}/templates/values.yaml.tpl", {
       argocd_server_admin_password_hash = var.argocd_server_admin_password_hash
+      dataops_repo_ssh_key              = var.argocd_repo_ssh_key
     })
   ]
 

@@ -10,3 +10,9 @@ variable "argocd_server_admin_password_hash" {
   type        = string
   sensitive   = true
 }
+
+variable "argocd_repo_ssh_key" {
+  description = "The SSH Key of dataops repository."
+  type        = string
+  sensitive   = true
+}
