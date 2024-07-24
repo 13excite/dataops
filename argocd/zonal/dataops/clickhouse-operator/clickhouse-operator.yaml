@@ -22,7 +22,7 @@ spec:
               enabled: false # explicit is better than implicit
       destination:
         server: https://kubernetes.default.svc
-        namespace: 'clickhouse-k8s-logs'
+        namespace: 'clickhouse'
       syncPolicy:
         automated:
           prune: true
