@@ -33,3 +33,36 @@ resource "helm_release" "argocd" {
     ]
   }
 }
+
+resource "kubernetes_manifest" "zonal_apps_of_apps" {
+  manifest = {
+    "apiVersion" = "argoproj.io/v1alpha1"
+    "kind"       = "Application"
+    "metadata" = {
+      "name"      = "zonal-apps"
+      "namespace" = "argocd"
+    }
+    "spec" = {
+      "project" = "default"
+      "source" = {
+        "path"           = "argocd/zonal/dataops"
+        "repoURL"        = "https://github.com/13excite/dataops.git"
+        "targetRevision" = "HEAD"
+        "directory" = {
+          "recurse" = true
+        }
+      }
+      "destination" = {
+        "server"    = "https://kubernetes.default.svc"
+        "namespace" = "argocd"
+      }
+      "syncPolicy" = {
+        "automated" = {
+          "prune"    = true
+          "selfHeal" = true
+        }
+      }
+    }
+  }
+  depends_on = [helm_release.argocd]
+}
