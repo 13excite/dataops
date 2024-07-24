@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: clickhouse-operator
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  generators:
+    - clusters: {}
+  template:
+    metadata:
+      name: 'clickhouse-operator'
+    spec:
+      project: default
+      source:
+        repoURL: 'https://docs.altinity.com/clickhouse-operator'
+        chart: altinity-clickhouse-operator
+        targetRevision: '0.23.6'
+        helm:
+          values: |
+            serviceMonitor:
+              enabled: false # explicit is better than implicit
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: 'clickhouse-k8s-logs'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+          allowEmpty: false
+        syncOptions:
+          - CreateNamespace=true
+          - RespectIgnoreDifferences=true
+      ignoreDifferences:
+        - kind: CustomResourceDefinition
+          group: apiextensions.k8s.io
+          jsonPointers:
+            - /spec/versions # Ignore changes to CRD versions
