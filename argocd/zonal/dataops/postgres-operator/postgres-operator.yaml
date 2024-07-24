@@ -1,0 +1,36 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: postgres-operator
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  generators:
+    - clusters: {}
+  template:
+    metadata:
+      name: 'postgres-operator'
+    spec:
+      project: default
+      source:
+        repoURL: 'https://opensource.zalando.com/postgres-operator/charts/postgres-operator'
+        chart: postgres-operator
+        targetRevision: 'v1.12.2'
+        helm:
+          values: |
+            configKubernetes:
+              cluster_domain: cluster.local
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: 'postgres-operator'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+          allowEmpty: false
+        syncOptions:
+          - CreateNamespace=true
+      ignoreDifferences:
+        - kind: Namespace
+          jsonPointers:
+            - /metadata/labels
