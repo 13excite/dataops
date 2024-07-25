@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: clickhouse-gas-stations
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  generators:
+    - clusters: {}
+  template:
+    metadata:
+      name: clickhouse-gas-stations
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/13excite/dataops.git 
+        path: argocd/apps/clickhouse/overlays/gasstations
+        targetRevision: HEAD
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: 'clickhouse'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+          allowEmpty: false
