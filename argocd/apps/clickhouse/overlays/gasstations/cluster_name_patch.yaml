@@ -1,0 +1,7 @@
+- op: replace
+  path: /spec/configuration/clusters/0/name
+  value: gas
+
+- op: replace
+  path: /metadata/name
+  value: gas

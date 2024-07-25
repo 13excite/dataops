@@ -1,0 +1,8 @@
+apiVersion: "clickhouse.altinity.com/v1"
+kind: "ClickHouseInstallation"
+metadata:
+  name: "PLACEHOLDER"
+spec:
+  configuration:
+    clusters:
+      - name: "PLACEHOLDER"
