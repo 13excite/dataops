@@ -16,6 +16,27 @@ nodes:
   - containerPort: 443
     hostPort: 443
     protocol: TCP
+  - containerPort: 5432
+    hostPort: 5432
+    protocol: TCP
+  - containerPort: 8123
+    hostPort: 8123
+    protocol: TCP
+  - containerPort: 8999
+    hostPort: 8999
+    protocol: TCP
+  - containerPort: 9000
+    hostPort: 9000
+    protocol: TCP
+  - containerPort: 9001
+    hostPort: 9001
+    protocol: TCP
+  - containerPort: 9002
+    hostPort: 9002
+    protocol: TCP
+  - containerPort: 9092
+    hostPort: 9092
+    protocol: TCP
 - role: worker
   image: kindest/node:v1.28.9
 - role: worker
