@@ -27,3 +27,7 @@ controller:
         requests:
             cpu:    "${resources_requests.cpu}"
             memory: "${resources_requests.memory}"
+
+#tcp:
+#  "8123": "clickhouse/clickhouse-gas-01:8123"
+#  "9000": "clickhouse/clickhouse-gas-01:9000"
