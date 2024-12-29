@@ -10,12 +10,12 @@
       },
     },
     spec: {
-      teamId: 'data',
+      teamId: 'dataops',
       volume: {
         size: '1Gi',
         storageClass: 'standard', // switch to variable std.extVar('storage_class')
       },
-      numberOfInstances: 2,
+      numberOfInstances: 1,
       users: {
         airflow_user: [
           'createdb',
