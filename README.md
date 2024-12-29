@@ -19,3 +19,24 @@ k8s cluster.
 - [JupyterHub](https://jupyter.org/hub) **TODO**
 - [Spark](https://spark.apache.org/) **TODO**
 - [Superset](https://superset.apache.org/) **TODO**
+
+## URLs
+
+Don't forget to add the following lines to your `/etc/hosts` file:
+
+```bash
+127.0.0.1 argocd.dataops
+127.0.0.1 minio.dataops
+127.0.0.1 console.minio.dataops
+```
+
+- ArgoCD: [http://argocd.dataops](http://argocd.dataops)
+- Minio-Console: [http://console.minio.dataops](http://console.minio.dataops)
+- Minio API: [http://minio.dataops](http://minio.dataops)
+
+## Credentials
+
+Default credentials:
+
+- ArgoCD: admin/password
+- Minio: minioadmin/minioadmin
