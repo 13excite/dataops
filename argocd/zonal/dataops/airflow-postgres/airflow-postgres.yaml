@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: airflow-postgres
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  generators:
+    - clusters: {}
+  template:
+    metadata:
+      name: airflow-postgres
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/13excite/dataops.git
+        path: argocd/modules/postgres-airflow
+        targetRevision: HEAD
+        directory:
+          jsonnet:
+            extVars:
+              - name: namespace
+                value: 'airflow-postgres'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: airflow-postgres
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+          allowEmpty: false
+        syncOptions:
+          - CreateNamespace=true
