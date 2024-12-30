@@ -29,8 +29,6 @@ spec:
             migrateDatabaseJob:
               enabled: true
               useHelmHooks: false
-            registry:
-              secretName: airflow-dockerconfig-secret
             data:
               brokerUrlSecretName: 'airflow-broker-url'
               metadataConnection:
