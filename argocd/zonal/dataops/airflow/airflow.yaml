@@ -85,7 +85,7 @@ spec:
             extraSecrets:
               airflow-ssh-secret:
                 data: |
-                  gitSshKey: 'PUT_SSH_KEY_TO_GIT_HERE'
+                  gitSshKey: 'UFVUX1NTSF9LRVlfVE9fR0lUX0hFUkUK'
             webserver:
               defaultUser:
                 enabled: false
