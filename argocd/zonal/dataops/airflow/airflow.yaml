@@ -29,8 +29,6 @@ spec:
             migrateDatabaseJob:
               enabled: true
               useHelmHooks: false
-            registry:
-              secretName: airflow-dockerconfig-secret
             data:
               brokerUrlSecretName: 'airflow-broker-url'
               metadataConnection:
@@ -65,7 +63,7 @@ spec:
             workers:
               replicas: 1
               persistence:
-                size: 500Mi
+                size: 100Mi
                 storageClassName: 'standard'
               resources:
                 limits:
@@ -86,6 +84,10 @@ spec:
               airflow-ssh-secret:
                 data: |
                   gitSshKey: 'UFVUX1NTSF9LRVlfVE9fR0lUX0hFUkUK'
+            triggerer:
+              persistence:
+                size: 100Mi
+                storageClassName: 'standard'
             webserver:
               defaultUser:
                 enabled: false
