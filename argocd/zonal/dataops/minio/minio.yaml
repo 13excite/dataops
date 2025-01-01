@@ -32,6 +32,9 @@ spec:
               - accessKey: redwriteuser
                 secretKey: redwriteuser123
                 policy: readwrite
+            buckets:
+              - name: dataops
+                policy: none
             resources:
               requests:
                 memory: 1Gi
