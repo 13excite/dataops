@@ -58,8 +58,6 @@ spec:
             env:
               - name: AIRFLOW_ENV
                 value: dataops
-              - name: AIRFLOW_VAR_OUTPUT_FOLDER
-                value: "/opt/airflow/data"
             workers:
               replicas: 1
               persistence:
@@ -72,14 +70,6 @@ spec:
                 requests:
                   cpu: 100m
                   memory: 256Mi
-              extraVolumes:
-              - name: worker-output-folder-storage
-                persistentVolumeClaim:
-                  claimName: worker-output-folder
-              extraVolumeMounts:
-              - name: worker-output-folder-storage
-                mountPath: /opt/airflow/data
-                readOnly: false
             extraSecrets:
               airflow-ssh-secret:
                 data: |
@@ -104,14 +94,6 @@ spec:
               readinessProbe:
                 periodSeconds: 30
             scheduler:
-              extraVolumes:
-              - name: scheduler-output-folder-storage
-                persistentVolumeClaim:
-                  claimName: scheduler-output-folder
-              extraVolumeMounts:
-              - name: scheduler-output-folder-storage
-                mountPath: /opt/airflow/data
-                readOnly: false
               strategy:
                 type: Recreate
               resources:

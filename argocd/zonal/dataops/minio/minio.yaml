@@ -25,6 +25,13 @@ spec:
               size: 2Gi
             rootUser: "minioadmin"
             rootPassword: "minioadmin"
+            users:
+              - accessKey: console
+                secretKey: console123
+                policy: consoleAdmin
+              - accessKey: redwriteuser
+                secretKey: redwriteuser123
+                policy: readwrite
             resources:
               requests:
                 memory: 1Gi
