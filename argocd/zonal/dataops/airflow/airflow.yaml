@@ -27,7 +27,7 @@ spec:
             createUserJob:
               useHelmHooks: false
             migrateDatabaseJob:
-              enabled: false
+              enabled: true
               useHelmHooks: false
             data:
               brokerUrlSecretName: 'airflow-broker-url'
