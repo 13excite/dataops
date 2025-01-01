@@ -27,13 +27,13 @@ spec:
             createUserJob:
               useHelmHooks: false
             migrateDatabaseJob:
-              enabled: true
+              enabled: false
               useHelmHooks: false
             data:
               brokerUrlSecretName: 'airflow-broker-url'
               metadataConnection:
                 user: airflow_user
-                pass: 'password123'
+                pass: password123
                 protocol: postgresql
                 host: data-airflow-cls.airflow-postgres.svc
                 port: 5432
@@ -80,7 +80,13 @@ spec:
                 storageClassName: 'standard'
             webserver:
               defaultUser:
-                enabled: false
+                enabled: true
+                role: Admin
+                username: admin
+                email: admin@example.com
+                firstName: admin
+                lastName: user
+                password: admin
               replicas: 1
               resources:
                 limits:
@@ -136,7 +142,6 @@ spec:
                 cookie_samesite: Lax
                 enable_proxy_fix: 'True'
                 rbac: 'True'
-                authenticate: 'True'
               celery:
                 worker_concurrency: 2
               scheduler:
